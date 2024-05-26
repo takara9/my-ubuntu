@@ -2,7 +2,7 @@
 FROM ubuntu:22.04
 
 # モジュールをインストール
-RUN apt-get update && apt-get install -y python3 python3-pip iputils-ping dnsutils curl iproute2 zip unzip groff
+RUN apt update && apt-get install -y python3 python3-pip iputils-ping dnsutils curl iproute2 zip unzip groff
 RUN curl -LJO https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 RUN mv yq_linux_amd64 /usr/local/bin/yq
 RUN chmod a+x /usr/local/bin/yq
