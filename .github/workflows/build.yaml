@@ -43,7 +43,7 @@ jobs:
       - name: Test a container from the image
         run: |
           docker images
-          docker run -it --name test ${{ env.IMAGE_NAME }} ls -lR / 
+          docker run -i --name test ${{ env.IMAGE_NAME }} apt list --installed
           docker ps -a
 
 
