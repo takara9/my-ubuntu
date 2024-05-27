@@ -1,4 +1,7 @@
-# ビルド
+# Ubuntuコンテナにデバック用ツールなどをインストールしたイメージ
+
+
+## ビルド
 ```
 docker build -t my-ubuntu:0.3 .
 ```
@@ -33,5 +36,24 @@ docker push maho/my-ubuntu:0.3
 - docker run -it maho/my-ubuntu:0.3 bash
 - kubectl run -it mypod --rm --image maho/my-ubuntu:0.3 -- bash
 
+
+## GitHubでのリリース方法
+メインブランチへ移動してコードを最新化する。そして、ブランチを削除
+
+```
+$ git checkout main
+$ git pull
+$ git branch -d update_branch
+```
+
+
+リリースするTAGを設定する。
+ここで付与するTAGはコンテナイメージのタグになるので、リポジトリを確認して、タグ名を決めること。
+
+```
+TAG=1.x
+$ git tag -a $TAG -m "version $TAG"
+$ git push origin $TAG
+```
 
 

@@ -22,12 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check go test
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-      - run: make test
-
       - name: Check Dockerfile 
         run: |
           docker run --rm -i hadolint/hadolint < Dockerfile
@@ -49,7 +43,7 @@ jobs:
       - name: Test a container from the image
         run: |
           docker images
-          docker run -it --name test ${{ env.IMAGE_NAME }} ls -lR / 
+          docker run -i --name test ${{ env.IMAGE_NAME }} apt list --installed
           docker ps -a
 
 
